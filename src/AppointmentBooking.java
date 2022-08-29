@@ -165,84 +165,111 @@ public class AppointmentBooking {
             System.out.println(" ");
             System.out.println("1.Login \t 2.Registration\n");
             int ch = sc.nextInt();
-            switch (ch)
-            {
+            switch (ch) {
                 case 1:
-                    if(patientMobileNumber.isEmpty())
-                    {
+                    if (patientMobileNumber.isEmpty()) {
                         System.out.println("First register yourself then login...!");
                         Thread.sleep(500);
                         break;
-                    }
-                    else
-                    {
+                    } else {
                         patientLogin();
-                        flag=false;
+                        flag = false;
                     }
                     break;
 
                 case 2:
                     patientRegistration();
-                    flag=false;
+                    flag = false;
                     break;
 
                 default:
                     System.out.println("\nYou entered wrong choice. enter another choice..!!");
-                    flag=true;
+                    flag = true;
                     Thread.sleep(1000);
                     break;
             }
         }
     }
-    void doctor() throws Exception
-    {
-      Scanner sc=new Scanner(System.in);
-      int choice=0;
 
-      boolean flag=true;
-      while(flag)
-      {
-          new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+    void doctor() throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int choice = 0;
 
-          System.out.println("\t\t  _________________________");
-          System.out.println("\t\t |                         |");
-          System.out.println("\t\t | Welcome to Doctor Page!|");
-          System.out.println("\t\t |_________________________|");
-          System.out.println(" ");
+        boolean flag = true;
+        while (flag) {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
-          System.out.println("1.Login \t 2.Registration");
-          choice=sc.nextInt();
+            System.out.println("\t\t  _________________________");
+            System.out.println("\t\t |                         |");
+            System.out.println("\t\t | Welcome to Doctor Page!|");
+            System.out.println("\t\t |_________________________|");
+            System.out.println(" ");
 
-          switch (choice)
-          {
-              case 1:
-                  if(doctorMobileNumber.isEmpty())
-                  {
-                      System.out.println("Register first....!");
-                      flag=false;
-                      Thread.sleep(500);
-                      break;
-                  }
-                  else
-                  {
-                      doctorLogin();
-                      flag=false;
-                  }
-                  break;
-              case 2:
-                  doctorRegistration();
-                  flag=false;
-                  break;
+            System.out.println("1.Login \t 2.Registration");
+            choice = sc.nextInt();
 
-              default:
-                  System.out.println("Entered wrong choice..");
-                  flag=true;
-          }
-      }
+            switch (choice) {
+                case 1:
+                    if (doctorMobileNumber.isEmpty()) {
+                        System.out.println("Register first....!");
+                        flag = false;
+                        Thread.sleep(500);
+                        break;
+                    } else {
+                        doctorLogin();
+                        flag = false;
+                    }
+                    break;
+                case 2:
+                    doctorRegistration();
+                    flag = false;
+                    break;
+
+                default:
+                    System.out.println("Entered wrong choice..");
+                    flag = true;
+            }
+        }
     }
-    void patientLogin()throws Exception
-    {
 
+    void patientLogin() throws Exception {
+        Scanner sc = new Scanner(System.in);
+        boolean flag = true;
+        long mobileNumber;
+        byte choice;
+        new ProcessBuilder("cmd", "/c""cls").inheritIO().start().waitFor();
+        System.out.println("\t\t  _________________________");
+        System.out.println("\t\t |                         |");
+        System.out.println("\t\t |         Login 		   |");
+        System.out.println("\t\t |_________________________|");
+
+        System.out.println("Enter your Username(mobilenumber)");
+        mobileNumber = sc.nextLong();
+        System.out.println("Enter your Password");
+        String password = sc.next();
+
+        boolean flag1 = false;
+        int j;
+        for (j = 0; j <= patientMobileNumber.size() - 1; j++)
+        {
+
+            if ((patientMobileNumber.get(j)).equals(mobileNumber) && (patientPassword.get(j)).equals(password)) ;
+            {
+                flag1 = true;
+                break;
+            }
+        }
+        if(flag1==true)
+        {
+            Thread.sleep(1000);
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            System.out.println("\t\t  _________________________");
+            System.out.println("\t\t |                         |");
+            System.out.println("\t\t |     Book Appointment    |");
+            System.out.println("\t\t |_________________________|");
+
+
+        }
     }
 }
 
