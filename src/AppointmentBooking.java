@@ -111,14 +111,52 @@ public class AppointmentBooking {
                     break;
                 }
                 break;
-                case 2:
-                    {
-
+                case 2: {
+                    if (patientName.isEmpty()) {
+                        System.out.println("No Registered Patients yet.");
+                        Thread.sleep(3000);
+                        break;
+                    } else {
+                        for (int i = 0; i <= patientName.size() - 1; i++) {
+                            System.out.println(i + ". " + patientName.get(i));
+                        }
+                        System.out.println("\n\n1. Main menu\t 2. Previous menu");
+                        menuChoice = sc.nextByte();
+                        if (menuChoice == 1) {
+                            flag = false;
+                        } else {
+                            break;
+                        }
                     }
+                    break;
+
                 }
+                case 3:
+                    if (patientNameBooking.isEmpty()) {
+                        System.out.println("\nNo Appointments yet.");
+                        Thread.sleep(3000);
+                        break;
+                    } else {
+                        for (int i = 0; i <= patientNameBooking.size() - 1; i++) {
+                            System.out.println(i + ". " + patientNameBooking.getClass(i));
+                        }
+                        Thread.sleep(5000);
+                        flag = false;
+                    }
+                    break;
+                default:
+                    System.out.println("wrong choice");
+                    Thread.sleep(1000);
+                    flag=true;
             }
         }
+
     }
+    void patient() throws Exception
+    {
+
+    }
+}
 
 
 
