@@ -237,7 +237,7 @@ public class AppointmentBooking {
         boolean flag = true;
         long mobileNumber;
         byte choice;
-        new ProcessBuilder("cmd", "/c""cls").inheritIO().start().waitFor();
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         System.out.println("\t\t  _________________________");
         System.out.println("\t\t |                         |");
         System.out.println("\t\t |         Login 		   |");
@@ -250,8 +250,7 @@ public class AppointmentBooking {
 
         boolean flag1 = false;
         int j;
-        for (j = 0; j <= patientMobileNumber.size() - 1; j++)
-        {
+        for (j = 0; j <= patientMobileNumber.size() - 1; j++) {
 
             if ((patientMobileNumber.get(j)).equals(mobileNumber) && (patientPassword.get(j)).equals(password)) ;
             {
@@ -259,8 +258,7 @@ public class AppointmentBooking {
                 break;
             }
         }
-        if(flag1==true)
-        {
+        if (flag1 == true) {
             Thread.sleep(1000);
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             System.out.println("\t\t  _________________________");
@@ -268,15 +266,13 @@ public class AppointmentBooking {
             System.out.println("\t\t |     Book Appointment    |");
             System.out.println("\t\t |_________________________|");
             // I understand other parts a little but i do not understand this line of code as per patientName.get(j)
-            System.out.println("\n Welcome " +patientName.get(j)+", to book appointment, choose your doctor..");
+            System.out.println("\n Welcome " + patientName.get(j) + ", to book appointment, choose your doctor..");
 
-            for (int i=0; i<=doctorName.size()-1; i++)
-            {
-                choice= sc.nextByte();
+            for (int i = 0; i <= doctorName.size() - 1; i++) {
+                choice = sc.nextByte();
                 doctorID.add(choice);
 
-                while (flag)
-                {
+                while (flag) {
                     Thread.sleep(1000);
 
                     new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -285,19 +281,105 @@ public class AppointmentBooking {
                     System.out.println("\t\t |     Book Appointment    |");
                     System.out.println("\t\t |_________________________|");
 
-                    if(choice<=doctorName.size() && choice>0)
-                    {
+                    if (choice <= doctorName.size() && choice > 0) {
                         // i didn't grasp this line of code too
-                        System.out.println("\n\nName: \t" +doctorName.get(choice-1)+ "" + "\nAge: \t"+doctorAge.get(choice-1)+"\nMobile: "+doctorMobileNumber.get(choice-1) +"\nCity: \t " +doctorCity.get(choice-1));
+                        System.out.println("\n\nName: \t" + doctorName.get(choice - 1) + "" + "\nAge: \t" + doctorAge.get(choice - 1) + "\nMobile: " + doctorMobileNumber.get(choice - 1) + "\nCity: \t " + doctorCity.get(choice - 1));
+                        System.out.println("\n Enter your name: \t");
+                        sc.nextLine();
+                        patientNameBooking.add(sc.nextLine());
+                        System.out.println("Enter your age: \t");
+                        patientAgeBooking.add(sc.nextInt());
+                        System.out.println(" Enter your gender: \t");
+                        patientGenderBooking.add(sc.next());
+
+                        System.out.println("\n Booking Successful..");
+
+                        Thread.sleep(1000);
+                        flag = false;
+                        break;
+
+                    } else {
+                        System.out.println("\n Enter correct input..");
+                        flag = true;
+                        Thread.sleep(1000);
 
                     }
 
                 }
+
+            }
+           else
+            {
+                System.out.println("Login unsuccessful..");
+                Thread.sleep(900);
+                flag = false;
             }
 
+        }
+
+
+    }
+
+    void patientRegistration() throws Exception
+    {
+        Scanner sc = new Scanner(System.in);
+        int i=0;
+        long mobileNumber;
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        System.out.println("\n");
+        System.out.println("\t\t | Welcome to the Registration Page| ");
+        System.out.println("\n");
+        System.out.println("Please enter your name");
+        patientName.add(sc.nextLine());
+        System.out.println("enter your Age: ");
+        patientAge.add(sc.nextInt());
+        System.out.println("Please Enter your mobile number");
+        mobileNumber= sc.nextLong();
+        long mno;
+
+        boolean flag=true, flag1=true;
+
+        if(patientMobileNumber.isEmpty())
+        {
+            patientMobileNumber.add((mobileNumber));
+            System.out.println("Enter password");
+            patientPassword.add(sc.next());
+            System.out.println("Registration is successful");
+
+            Thread.sleep(900);
+            flag1=false;
 
         }
+        else
+        {
+           for(i=0; i<=patientMobileNumber.size()-1; i++)
+
+           {
+               // I didn't get this line of Code
+               mno=patientMobileNumber.get(i);
+
+               if(mno==mobileNumber)
+               {
+                   flag1=false;
+                   break;
+               }
+           }
+           if(flag1==true)
+           {
+               patientMobileNumber.add(mobileNumber);
+               System.out.println("Enter password");
+               patientPassword.add(sc.next());
+               System.out.println("Registration is successful");
+               Thread.sleep(900);
+           }
+           else
+           {
+               System.out.println("same mobile number is not allowed\n");
+               Thread.sleep(500);
+           }
+        }
     }
+
 }
 
 
