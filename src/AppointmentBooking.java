@@ -267,6 +267,33 @@ public class AppointmentBooking {
             System.out.println("\t\t |                         |");
             System.out.println("\t\t |     Book Appointment    |");
             System.out.println("\t\t |_________________________|");
+            // I understand other parts a little but i do not understand this line of code as per patientName.get(j)
+            System.out.println("\n Welcome " +patientName.get(j)+", to book appointment, choose your doctor..");
+
+            for (int i=0; i<=doctorName.size()-1; i++)
+            {
+                choice= sc.nextByte();
+                doctorID.add(choice);
+
+                while (flag)
+                {
+                    Thread.sleep(1000);
+
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                    System.out.println("\t\t  _________________________");
+                    System.out.println("\t\t |                         |");
+                    System.out.println("\t\t |     Book Appointment    |");
+                    System.out.println("\t\t |_________________________|");
+
+                    if(choice<=doctorName.size() && choice>0)
+                    {
+                        // i didn't grasp this line of code too
+                        System.out.println("\n\nName: \t" +doctorName.get(choice-1)+ "" + "\nAge: \t"+doctorAge.get(choice-1)+"\nMobile: "+doctorMobileNumber.get(choice-1) +"\nCity: \t " +doctorCity.get(choice-1));
+
+                    }
+
+                }
+            }
 
 
         }
