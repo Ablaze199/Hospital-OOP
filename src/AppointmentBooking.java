@@ -444,6 +444,64 @@ public class AppointmentBooking {
                }
               }
           }
+          void doctorLogin() throws Exception
+          {
+              Scanner sc=new Scanner(System.in);
+              Long mobileNumber;
+              new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+              System.out.println("\t\t---------------------------------");
+              System.out.println("\t\t| This is doctor login page     |");
+              System.out.println("\t\t---------------------------------");
+              System.out.println("Enter your Username(mobile number)");
+              mobileNumber=sc.nextLong();
+              System.out.println("Enter your Password");
+              String password= sc.next();
+              int i =0;
+              byte choice;
+
+              boolean flag=false;
+              boolean flag11=true;
+
+              for(i=0; i<doctorMobileNumber.size()-1; i++)
+              {
+                 if((doctorMobileNumber.get(i)).equals(mobileNumber) && (doctorPassword.get(i)).equals((password)))
+                 {
+                     flag=true;
+                     break;
+                 }
+                 if(flag==true)
+                 {
+                     while (flag11)
+                     {
+                         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                         System.out.println("\t\t----------------------------------------");
+                         System.out.println("\t\t| Welcome Doctor "+doctorName.get(i)+" |");
+                         System.out.println("\t\t----------------------------------------");
+                         System.out.println("\n\nPress 1 to see your Appointments. \n");
+                         choice=sc.nextByte();
+
+                         byte j=0;
+                         switch (choice)
+                         {
+                             case 1:
+                                 if((doctorID.isEmpty()!=true))
+                                 {
+                                     //clumsy line of code
+                                     while(j<=doctorID.size()-1)
+                                     {
+                                         if((i+1)==doctorID.get(j))
+                                         {
+                                             System.out.println("patient name: "+patientNameBooking.get(j));
+                                             j++;
+                                         }
+                                     }
+                                     Thread.sleep(4000);
+                                 }
+                         }
+                     }
+                 }
+              }
+          }
 }
 
 
