@@ -379,7 +379,71 @@ public class AppointmentBooking {
            }
         }
     }
+          void doctorRegistration() throws Exception
+          {
+              Scanner sc=new Scanner(System.in);
+              int i=0;
+              long mobileNumber;
+              boolean flag=true, flag1=true;
 
+              new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+
+              System.out.println("\t\t ----------------------------------");
+              System.out.println("\t\t| This is doctor registration Page |");
+              System.out.println("\t\t ----------------------------------");
+              System.out.println("\n");
+
+              System.out.println("Please enter your name");
+              doctorName.add(sc.nextLine());
+
+              System.out.println("Please enter your  Mobile number");
+              mobileNumber=(sc.nextLong());
+
+              long mno;
+
+              if(doctorMobileNumber.isEmpty())
+              {
+                  doctorMobileNumber.add((mobileNumber));
+                  System.out.println("Enter password");
+                  doctorPassword.add(sc.next());
+                  System.out.println("Registration is Successful");
+                  Thread.sleep(900);
+                  flag1=false;
+
+              }
+              else
+              {
+               for(i=0; i<=doctorMobileNumber.size()-1; i++)
+               {
+                   mno=doctorMobileNumber.get(i);
+// not very clear
+                   if(mno==mobileNumber)
+                   {
+                       flag1=false;
+                       break;
+                   }
+               }
+
+               if(flag1==true)
+               {
+                doctorMobileNumber.add(mobileNumber);
+                   System.out.println("Enter age:");
+                   doctorAge.add(sc.nextInt());
+                   System.out.println("Enter City: ");
+                   doctorCity.add(sc.next());
+                   System.out.println("Registration is successful.");
+                   System.out.println("Details: Name: "+doctorName+" number:"+doctorMobileNumber);
+                   Thread.sleep(900);
+               }
+               else
+               {
+                   System.out.println("same mobile number is not allowed\n");
+                   int index=doctorName.size()-1;
+                   doctorName.remove(index);
+                   Thread.sleep(500);
+               }
+              }
+          }
 }
 
 
