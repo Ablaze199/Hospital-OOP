@@ -489,7 +489,7 @@ public class AppointmentBooking {
                                      //clumsy line of code
                                      while(j<=doctorID.size()-1)
                                      {
-                                         if((i+1)==doctorID.get(j))
+                                         if((i+1)==doctorID.get(j));
                                          {
                                              System.out.println("patient name: "+patientNameBooking.get(j));
                                              j++;
@@ -497,9 +497,57 @@ public class AppointmentBooking {
                                      }
                                      Thread.sleep(4000);
                                  }
+                                 else
+                                 {
+                                     System.out.println("No Appointments.....!");
+                                     Thread.sleep(3000);
+                                     flag11=true;
+                                 }
+
+                                 break;
                          }
                      }
+                     else
+                     {
+                         System.out.println("Login unsuccessful..");
+                         Thread.sleep(900);
+                         break;
+                     }
                  }
+              }
+          }
+          public static void main(String[] args) throws Exception
+          {
+              AppointmentBooking ap=new AppointmentBooking();
+              Scanner sc=new Scanner(System.in);
+              ap.dataAdd();
+              boolean flag=true;
+              while(flag=true)
+              {
+                  new ProcessBuilder("cmd","/c", "cls").inheritIO().start().waitFor();
+                  System.out.println("---------------------------------------------------------------------");
+                  System.out.println("\t\t | Welcome to Doctor AppointmentBooking |");
+                  System.out.println("----------------------------------------------------------------------\n\n");
+                  System.out.println("\n1. Doctor \t 2. Patient \t Admin \t 4. Exit");
+
+                  int choice=sc.nextInt();
+                  switch (choice)
+                  {
+                      case 1:
+                          ap.doctor();
+                          flag=true;
+                          break;
+                      case 2:
+                          ap.patient();
+                          flag=true;
+                          break;
+                      case 3:
+                          ap.admin();
+                          flag=true;
+                          break;
+                      default:
+                          System.exit(0);
+                  }
               }
           }
 }
