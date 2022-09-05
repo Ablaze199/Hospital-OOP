@@ -100,6 +100,7 @@ public class AppointmentBooking {
                 case 1:
                     for (int i = 0; i <= doctorName.size() - 1; i++) ;
                 {
+                    int i = 0;
                     System.out.println("Name: \t" + doctorName.get(i));
                 }
                 byte menuChoice;
@@ -138,7 +139,7 @@ public class AppointmentBooking {
                         break;
                     } else {
                         for (int i = 0; i <= patientNameBooking.size() - 1; i++) {
-                            System.out.println(i + ". " + patientNameBooking.getClass(i));
+                            System.out.println(i + ". " + patientNameBooking.getClass());
                         }
                         Thread.sleep(5000);
                         flag = false;
@@ -308,7 +309,7 @@ public class AppointmentBooking {
                 }
 
             }
-           else
+
             {
                 System.out.println("Login unsuccessful..");
                 Thread.sleep(900);
@@ -507,7 +508,7 @@ public class AppointmentBooking {
                                  break;
                          }
                      }
-                     else
+
                      {
                          System.out.println("Login unsuccessful..");
                          Thread.sleep(900);
